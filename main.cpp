@@ -1,12 +1,80 @@
+<<<<<<< HEAD
 #include "Couts.hpp"
 #include "Location.hpp"
 #include "Electricite.hpp"
 #include "Eau.hpp"
 
+=======
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
 #include <iostream>
 #include <string>
 using namespace std;
 
+<<<<<<< HEAD
+=======
+class Couts {
+ public:
+    double souscout;
+    string nom;    
+    
+    Couts(double le_cout, string le_nom) {
+      this->souscout = le_cout;
+      this->nom = le_nom;      
+    }
+    
+    Couts() {
+      std::cout <<"Constructeur de Couts "<<std::endl; 
+    }
+    virtual ~Couts() {
+      std::cout <<"Destructeur de Couts "<<std::endl; 
+    }
+
+    void afficher() {
+      std::cout <<this->nom<<" : "<<this->souscout<<" sous/jour"<<std::endl;
+    }
+    
+    
+};
+
+class Location: public Couts {  
+ public:
+  Location (double le_cout, string le_nom) : Couts(le_cout,  le_nom) {}
+   
+    Location() {
+      std::cout <<"Constructeur de Location "<<std::endl; 
+    }
+    ~Location() {
+      std::cout <<"Destructeur de Location "<<std::endl; 
+    } 
+};
+
+class Electricite: public Couts {
+  
+ public:
+   
+    Electricite ( double le_cout, string le_nom): Couts(le_cout,  le_nom) {}
+
+    Electricite() {
+      std::cout <<"Constructeur d'electricite "<<std::endl; 
+    }
+    ~Electricite() {
+      std::cout <<"Destructeur d'electricite "<<std::endl; 
+    } 
+};
+
+class Eau : public Couts {
+  
+ public:
+   Eau ( double le_cout, string le_nom) : Couts(le_cout,  le_nom) {}
+   
+      Eau() {
+      std::cout <<"Constructeur d'eau "<<std::endl; 
+    }
+   ~Eau() {
+      std::cout <<"Destructeur d'eau"<<std::endl; 
+    } 
+};
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
 
 double calculercout (int a, int b);
 double calculercout (int a, int b, int c);
@@ -42,7 +110,11 @@ int main() {
     std::string nomloc;
     
     std::string module;
+<<<<<<< HEAD
     string espace = "Espace";
+=======
+    std::string espace = "Espace";
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
     do{    
       
       std::cout <<"Entrez un module de la machine pour l'espace : ";
@@ -51,11 +123,19 @@ int main() {
       std::cin >> m2;   
       std::cout << "Entrez le cout en sous pour la location en metres-carres/jour : ";
       std::cin >> prixloc;      
+<<<<<<< HEAD
       nomloc = espace+module;       
       
       Location* loc = new Location();  
       k++;  
       coutloc = arr[k]->calculercout(m2, prixloc);
+=======
+      nomloc = espace+module;
+      coutloc = calculercout(m2, prixloc); 
+      
+      Location* loc = new Location();  
+      k++;  
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
       arr[k] = new Location(coutloc, nomloc);    
        delete loc;    
       arr[k]->afficher();
@@ -90,15 +170,26 @@ int main() {
       std::cout << "Entrez le cout en sous pour l'electricite par KWH/jour : ";
       std::cin >> prixelec; 
       nomelec = electricite+module2;
+<<<<<<< HEAD
        
 
       Electricite* elec = new Electricite();
       k++;  
       coutelec = arr[k]->calculercout(volts, amperes, prixelec);
+=======
+      coutelec = calculercout(volts, amperes, prixelec); 
+
+      Electricite* elec = new Electricite();
+      k++;  
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
       arr[k] = new Electricite(coutelec, nomelec);  
       delete elec;    
       arr[k]->afficher();
       
+<<<<<<< HEAD
+=======
+      
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
 
       std::cout << "Voulez-vous ajouter un autre module pour l'electricite (1=oui, 2=non) : ";
       std::cin >> repcase2;
@@ -126,11 +217,18 @@ int main() {
       std::cout << "Entrez le cout en sous de l'eau par litre/jpur : ";
       std::cin >> prixeau;  
       nomeau = eau+module3;
+<<<<<<< HEAD
       
 
       Eau* eau = new Eau();
       k++;  
       couteau = arr[k]->calculercout(debit,prixeau);
+=======
+      couteau = calculercout(debit,prixeau);
+
+      Eau* eau = new Eau();
+      k++;  
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
       arr[k] = new Eau(couteau, nomeau);    
       delete eau;  
       arr[k]->afficher();
@@ -181,3 +279,20 @@ return 0;
 }
 
 
+<<<<<<< HEAD
+=======
+double calculercout (int a, int b) {
+      double coutloc1 = (double) a * (b / 30.0); 
+      return coutloc1;
+}
+
+double calculercout (int a, int b, int c) {
+      double coutelec1 = (double) (a * b * 24.0 * c) /1000.0;   
+      return coutelec1;
+}
+
+double calculercout (double a, double b) {
+      double couteau1 = (double) (a*b*24*60*60.0);
+      return couteau1;
+}
+>>>>>>> 42490be41a663354fbb6b44ff01facd69f5e4f43
